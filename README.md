@@ -60,7 +60,23 @@ Required records at Squarespace:
 | A | `@` | `185.199.109.153` |
 | A | `@` | `185.199.110.153` |
 | A | `@` | `185.199.111.153` |
-| CNAME | `www` | `<github-username>.github.io` |
+| CNAME | `www` | `bijandanyal.github.io` |
 
 The existing Squarespace A records on `@` are replaced, and the existing `www` CNAME to
 `ext-sq.squarespace.com` is repointed. Everything else in the zone stays exactly as it is.
+
+The four A record values were taken from GitHub's own documentation on 2026-08-15 and
+confirmed against a live request: asking `185.199.108.153` for `bidafaapp.com` by Host
+header already returns this site, byte identical to `docs/index.html`, before any DNS
+change. That is the pre-flight check worth repeating after any hosting change.
+
+## After the DNS records propagate
+
+1. Confirm `https://bidafaapp.com` serves this site rather than the Squarespace page.
+2. Turn on HTTPS enforcement, which cannot be enabled until a certificate exists, and a
+   certificate cannot be issued until DNS resolves to GitHub:
+
+       gh api -X PUT repos/BijanDanyal/bidafa-website/pages -f https_enforced=true
+
+3. Confirm the contact mailbox receives mail, set `contact.email_confirmed` to `true` in
+   `data/site.json`, and rebuild with `--production`.
