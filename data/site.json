@@ -22,9 +22,9 @@
   },
 
   "contact": {
-    "email": "hello@bidafaapp.com",
+    "email": "BiDaFa@bidafaapp.com",
     "email_confirmed": true,
-    "_email_note": "CONFIRMED by Bijan 2026-08-15: test mail sent to the mailbox and received on the Google Workspace account. Flag flipped the same day; build.py production gate satisfied."
+    "_email_note": "CONFIRMED by Bijan 2026-08-15: this is his real Google Workspace mailbox on the domain, stated directly ('my email is BiDaFa@bidafaapp.com not hello@'). The earlier hello@ address was a proposal that never existed; it appeared nowhere but this file and the generated page."
   },
 
   "site": {
