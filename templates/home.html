@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ data.hero.eyebrow }}</p>
+    <h1>{{ data.hero.h1 }}</h1>
+    <p class="lead">{{ data.hero.lead }}</p>
+    <p class="status" role="note">{{ data.hero.status }}</p>
+  </div>
+</section>
+
+<section id="what-we-do" class="band" aria-labelledby="what-we-do-h">
+  <div class="wrap prose">
+    <h2 id="what-we-do-h">{{ data.what_we_do.heading }}</h2>
+    {% for p in data.what_we_do.paragraphs %}
+    <p>{{ p }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="how-we-build" class="band band-alt" aria-labelledby="how-we-build-h">
+  <div class="wrap">
+    <h2 id="how-we-build-h">{{ data.how_we_build.heading }}</h2>
+    <p class="section-intro">{{ data.how_we_build.intro }}</p>
+    <ul class="principles">
+      {% for principle in data.how_we_build.principles %}
+      <li class="principle">
+        <h3>{{ principle.h }}</h3>
+        <p>{{ principle.p }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section id="about" class="band" aria-labelledby="about-h">
+  <div class="wrap prose">
+    <h2 id="about-h">{{ data.about.heading }}</h2>
+    {% for p in data.about.paragraphs %}
+    <p>{{ p }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="contact" class="band band-alt" aria-labelledby="contact-h">
+  <div class="wrap prose">
+    <h2 id="contact-h">{{ data.contact.heading }}</h2>
+    <p>{{ data.contact.paragraph }}</p>
+    <p><a class="button" href="mailto:{{ contact.email }}">{{ data.contact.cta_label }}</a></p>
+    <p class="email-plain"><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+  </div>
+</section>
+
+{% endblock %}

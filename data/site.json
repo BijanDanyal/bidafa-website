@@ -1,0 +1,99 @@
+{
+  "_comment": "Single source of truth for every fact and every line of copy on the site. Templates contain no prose. Cardinal rule: nothing in this file may be a claim we cannot evidence.",
+
+  "company": {
+    "brand": "BiDaFa",
+    "display_name": "BiDaFa Ltd",
+    "legal_name": "BIDAFA LTD",
+    "company_number": "17388837",
+    "jurisdiction": "England and Wales",
+    "incorporated": "2026-08-08",
+    "incorporated_human": "8 August 2026",
+    "sic_code": "62012",
+    "sic_description": "Business and domestic software development",
+    "_source": "Companies House public register, verified 2026-08-15 at https://find-and-update.company-information.service.gov.uk/company/17388837 (status: Active)",
+    "registered_office": {
+      "street": "82 Hallam Grange Rise",
+      "locality": "Sheffield",
+      "region": "England",
+      "postcode": "S10 4BG",
+      "country_code": "GB"
+    }
+  },
+
+  "contact": {
+    "email": "hello@bidafaapp.com",
+    "email_confirmed": false,
+    "_email_note": "UNCONFIRMED. Bijan must confirm this mailbox exists and receives mail on the Google Workspace account before deploy. build.py refuses a production build while email_confirmed is false."
+  },
+
+  "site": {
+    "url": "https://bidafaapp.com",
+    "locale": "en_GB",
+    "lang": "en-GB",
+    "seo_title": "BiDaFa Ltd | Practice apps for licensing and certification exams",
+    "seo_description": "BiDaFa Ltd is a software company registered in England, building practice and revision apps for occupational licensing and certification exams. First apps in development.",
+    "og_site_name": "BiDaFa"
+  },
+
+  "nav": [
+    { "label": "What we do", "href": "#what-we-do" },
+    { "label": "How we build", "href": "#how-we-build" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+
+  "home": {
+    "hero": {
+      "eyebrow": "Software company registered in England",
+      "h1": "Study apps for the exams that qualify people to work",
+      "lead": "BiDaFa Ltd builds practice and revision apps for occupational licensing and certification exams: the tests people sit before they can work as a notary, a security guard, a tradesperson or a licensed operator.",
+      "status": "Our first apps are in development and are not yet available to download."
+    },
+
+    "what_we_do": {
+      "heading": "What we do",
+      "paragraphs": [
+        "Occupational licensing exams decide whether someone is allowed to do their job. They are set from published statutes, regulations and official training manuals, they are often sat once or twice a year, and failing one can cost a person a season of work.",
+        "The study material for them is frequently poor. BiDaFa Ltd exists to build the practice apps those candidates actually need: accurate, specific to one jurisdiction and one exam, and derived from the official source rather than from a general purpose question bank."
+      ]
+    },
+
+    "how_we_build": {
+      "heading": "How we build",
+      "intro": "These are the principles our apps are designed to, not claims about products in the store. Nothing of ours has launched yet.",
+      "principles": [
+        {
+          "h": "Built from the official source material",
+          "p": "Questions are written from the published rules, statutes and training manuals the exam itself is set from, with the source recorded, rather than from guesswork about what might come up."
+        },
+        {
+          "h": "Every answer explained",
+          "p": "A wrong answer only teaches you something if you learn why it was wrong, so each question carries an explanation rather than a bare score at the end."
+        },
+        {
+          "h": "Yours once you buy it",
+          "p": "Apps are designed to work offline and to be a single purchase, with no subscription, so revising does not depend on having a signal in the exam centre car park."
+        }
+      ]
+    },
+
+    "about": {
+      "heading": "About the company",
+      "paragraphs": [
+        "BiDaFa Ltd was incorporated in England on 8 August 2026 and is registered as a business and domestic software development company, number 17388837.",
+        "It is a small independent company. The research, the writing and the building are done in house, which is the reason we can be specific about a single jurisdiction rather than general about many."
+      ]
+    },
+
+    "contact": {
+      "heading": "Get in touch",
+      "paragraph": "If you would like to know when our first apps launch, or you work for a training provider or an awarding body and want to talk, please email us.",
+      "cta_label": "Email BiDaFa"
+    }
+  },
+
+  "footer": {
+    "legal": "BiDaFa Ltd is a company registered in England and Wales, company number 17388837. Registered office: 82 Hallam Grange Rise, Sheffield, England, S10 4BG.",
+    "copyright_holder": "BiDaFa Ltd"
+  }
+}

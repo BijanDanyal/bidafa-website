@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{{ page.seo_title }}</title>
+<meta name="description" content="{{ page.seo_description }}">
+<link rel="canonical" href="{{ page.canonical }}">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.og_site_name }}">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:title" content="{{ page.seo_title }}">
+<meta property="og:description" content="{{ page.seo_description }}">
+<meta property="og:url" content="{{ page.canonical }}">
+<meta name="twitter:card" content="summary">
+
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/styles.css">
+
+<script type="application/ld+json">{{ jsonld | safe }}</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="{{ company.display_name }} home">
+      <span class="brand-mark" aria-hidden="true">B</span>
+      <span class="brand-text">{{ company.brand }}</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        {% for item in nav %}
+        <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="legal">{{ footer.legal }}</p>
+    <p class="copyright">Copyright {{ build.year }} {{ footer.copyright_holder }}.</p>
+  </div>
+</footer>
+
+</body>
+</html>

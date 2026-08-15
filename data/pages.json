@@ -1,0 +1,16 @@
+{
+  "_comment": "Page manifest. build.py renders one output file per entry, and sitemap.xml is generated from this list. Adding the future per-exam product pages means appending entries here (one per pack, data_file pointing at a generated json derived from that pack's website.json) plus one new template. No change to build.py is required for that, which is the whole point of the manifest.",
+
+  "pages": [
+    {
+      "id": "home",
+      "template": "home.html",
+      "output": "index.html",
+      "url_path": "/",
+      "data_key": "home",
+      "seo_title_key": "site.seo_title",
+      "seo_description_key": "site.seo_description",
+      "sitemap": { "changefreq": "monthly", "priority": "1.0" }
+    }
+  ]
+}
