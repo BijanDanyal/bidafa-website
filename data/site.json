@@ -23,8 +23,8 @@
 
   "contact": {
     "email": "hello@bidafaapp.com",
-    "email_confirmed": false,
-    "_email_note": "UNCONFIRMED. Bijan must confirm this mailbox exists and receives mail on the Google Workspace account before deploy. build.py refuses a production build while email_confirmed is false."
+    "email_confirmed": true,
+    "_email_note": "CONFIRMED by Bijan 2026-08-15: test mail sent to the mailbox and received on the Google Workspace account. Flag flipped the same day; build.py production gate satisfied."
   },
 
   "site": {
