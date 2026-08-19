@@ -240,3 +240,51 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* Exam reference pages.
+   Deliberately minimal. The audience for these pages is machine readers, so the effort
+   goes into the markup and the sourcing, not the presentation. This block exists only so
+   that a table of facts is legible rather than collapsed, because a page that renders as
+   broken reads as low quality to a human reviewer too. */
+
+.facts {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1rem 0.75rem;
+  font-size: 0.95rem;
+}
+.facts th,
+.facts td {
+  border: 1px solid var(--rule);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+.facts thead th { background: var(--bg); font-weight: 600; }
+.facts tbody th { font-weight: 600; width: 30%; }
+
+.meta { margin: 0; }
+.meta dt { font-weight: 600; margin-top: 0.6rem; }
+.meta dd { margin: 0.15rem 0 0; }
+
+.note { font-size: 0.9rem; color: var(--ink-soft); max-width: 78ch; }
+
+.exam-list { list-style: none; padding: 0; }
+.exam-list li { margin-bottom: 1.25rem; }
+.exam-list p { max-width: 78ch; }
+
+.sample {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  margin-block: 1rem;
+}
+.sample-q { font-weight: 600; max-width: 78ch; }
+.sample-options { margin: 0.4rem 0 0.8rem 1.2rem; }
+.sample-meta { margin: 0; }
+.sample-meta dt { font-weight: 600; margin-top: 0.5rem; font-size: 0.9rem; color: var(--ink-soft); }
+.sample-meta dd { margin: 0.1rem 0 0; max-width: 78ch; }
+
+.sources { padding-left: 1.1rem; }
+.sources li { margin-bottom: 0.7rem; max-width: 88ch; }
+.source-note { display: block; font-size: 0.9rem; color: var(--ink-soft); }

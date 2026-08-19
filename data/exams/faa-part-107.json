@@ -1,0 +1,314 @@
+{
+  "_comment": "One exam, one file. Adding another exam means copying this file, changing the values, and appending one entry to data/pages.json. No template change and no build.py change. See EXAM-PAGE-INTERFACE.md for the field contract and the gates that enforce it.",
+  "id": "faa-part-107",
+  "checked_on": "2026-08-19",
+  "seo_title": "FAA Part 107 exam (UAG): 60 questions, 70% to pass, 2 hours | BiDaFa",
+  "seo_description": "Reference page for the FAA Part 107 knowledge test, officially Unmanned Aircraft General - Small (UAG). 60 questions, 2 hours, 70% to pass, about 175 US dollars. Topic weightings, the operating limits that decide the paper, five worked sample questions, each figure cited to the FAA or the eCFR.",
+  "exam": {
+    "name": "FAA Part 107 exam",
+    "official_name": "Unmanned Aircraft General - Small",
+    "test_code": "UAG",
+    "also_known_as": [
+      "Part 107 test",
+      "FAA drone test",
+      "remote pilot knowledge test",
+      "sUAS knowledge test",
+      "UAG test"
+    ],
+    "country": "United States",
+    "regulator": "Federal Aviation Administration",
+    "grants": "Remote Pilot Certificate with a small UAS rating",
+    "governed_by": "14 CFR part 107"
+  },
+  "summary": "The FAA Part 107 exam, officially the Unmanned Aircraft General - Small (UAG) knowledge test, is the written test a person in the United States must pass to be issued an FAA Remote Pilot Certificate with a small UAS rating, which is the certificate required to fly a drone weighing less than 55 pounds for work or business.",
+  "sources": [
+    {
+      "id": "matrix",
+      "label": "FAA Airman Knowledge Testing Matrix, 22 October 2025",
+      "url": "https://www.faa.gov/training_testing/testing/testing_matrix",
+      "note": "Publishes one row per test code. The UAG row states the question count, minimum age, allotted time and passing score, and the retest rules for UAG follow it.",
+      "short": "FAA Airman Knowledge Testing Matrix"
+    },
+    {
+      "id": "acs",
+      "label": "Remote Pilot - Small Unmanned Aircraft Systems Airman Certification Standards, FAA-S-ACS-10B, April 2021",
+      "url": "https://www.faa.gov/training_testing/testing/acs/uas_acs.pdf",
+      "note": "Defines the five areas of operation and publishes the percentage of the test drawn from each.",
+      "short": "FAA-S-ACS-10B"
+    },
+    {
+      "id": "cfr107",
+      "label": "14 CFR part 107, Small Unmanned Aircraft Systems",
+      "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107",
+      "note": "The regulation the exam is set from. Section numbers are cited individually below.",
+      "short": "14 CFR part 107"
+    },
+    {
+      "id": "faafaq",
+      "label": "FAA, How much does it cost to get a remote pilot certificate?",
+      "url": "https://www.faa.gov/faq/how-much-does-it-cost-get-remote-pilot-certificate",
+      "note": "States the approximate charge made by Knowledge Testing Centers for the initial test.",
+      "short": "FAA, cost of a remote pilot certificate"
+    },
+    {
+      "id": "studyguide",
+      "label": "FAA Remote Pilot Study Guide, FAA-G-8082-22",
+      "url": "https://www.faa.gov/sites/faa.gov/files/regulations_policies/handbooks_manuals/aviation/remote_pilot_study_guide.pdf",
+      "note": "The FAA's own study guide for this test. Cited on the sample questions drawn from it.",
+      "short": "FAA-G-8082-22"
+    }
+  ],
+  "stats": [
+    {
+      "label": "Official test name",
+      "value": "Unmanned Aircraft General - Small",
+      "source": "matrix"
+    },
+    {
+      "label": "Test code",
+      "value": "UAG",
+      "source": "matrix"
+    },
+    {
+      "label": "Number of questions",
+      "value": "60",
+      "source": "matrix"
+    },
+    {
+      "label": "Question format",
+      "value": "Multiple choice, three options per question",
+      "source": "acs"
+    },
+    {
+      "label": "Time allowed",
+      "value": "2.0 hours",
+      "source": "matrix"
+    },
+    {
+      "label": "Passing score",
+      "value": "70",
+      "source": "matrix"
+    },
+    {
+      "label": "Questions needed to pass",
+      "value": "42 of 60",
+      "source": "matrix"
+    },
+    {
+      "label": "Minimum age to sit the test",
+      "value": "14 years",
+      "source": "matrix"
+    },
+    {
+      "label": "Minimum age to hold the certificate",
+      "value": "16 years",
+      "source": "cfr107"
+    },
+    {
+      "label": "Waiting period to retake after a failure",
+      "value": "14 calendar days",
+      "source": "matrix"
+    },
+    {
+      "label": "Instructor endorsement required",
+      "value": "No, for the UAG test none is required",
+      "source": "matrix"
+    },
+    {
+      "label": "Approximate test fee",
+      "value": "About 175 US dollars, charged by the testing centre",
+      "source": "faafaq"
+    },
+    {
+      "label": "Where it is sat",
+      "value": "An FAA-approved Knowledge Testing Center",
+      "source": "matrix"
+    },
+    {
+      "label": "Knowledge recency requirement",
+      "value": "Within the previous 24 calendar months",
+      "source": "cfr107"
+    }
+  ],
+  "stats_note": "Every figure above is taken from the source named beside it and was checked on the date shown at the top of this page. Where the FAA states a figure as approximate, this page says so rather than rounding it into a precise-looking number.",
+  "topics_heading": "What the test covers, and how much of it",
+  "topics_intro": "The FAA publishes the proportion of the test drawn from each area of operation in the Remote Pilot Airman Certification Standards, FAA-S-ACS-10B. These are the published ranges, not an estimate.",
+  "topics_source": "acs",
+  "topics": [
+    {
+      "area": "I. Regulations",
+      "weight": "15 to 25 percent",
+      "detail": "Privileges, limitations and flight operation under part 107, including registration, remote pilot certification, waivers, and the rules on operating over people and at night."
+    },
+    {
+      "area": "II. Airspace classification and operating requirements",
+      "weight": "15 to 25 percent",
+      "detail": "Airspace classes, chart reading, flight restrictions, and when an airspace authorisation is needed before flying."
+    },
+    {
+      "area": "III. Weather",
+      "weight": "11 to 16 percent",
+      "detail": "Aviation weather sources, reading a METAR, and the effects of weather on small unmanned aircraft performance."
+    },
+    {
+      "area": "IV. Loading and performance",
+      "weight": "7 to 11 percent",
+      "detail": "Weight and balance, the effect of density altitude, and how loading changes what the aircraft can safely do."
+    },
+    {
+      "area": "V. Operations",
+      "weight": "35 to 45 percent",
+      "detail": "The largest single area. Radio procedures, airport operations, emergency procedures, crew resource management, physiology, aeronautical decision making and maintenance."
+    }
+  ],
+  "limits_heading": "The operating limits the test is built around",
+  "limits_intro": "These figures come from a single regulation, 14 CFR 107.51, plus the definition of a small unmanned aircraft in 14 CFR 107.3. They account for a disproportionate share of the calculation questions on the paper. The text of each rule is quoted at the eCFR link in the sources list.",
+  "limits": [
+    {
+      "limit": "Maximum groundspeed",
+      "value": "87 knots, which the rule also states as 100 miles per hour",
+      "rule": "14 CFR 107.51(a)"
+    },
+    {
+      "limit": "Maximum altitude",
+      "value": "400 feet above ground level",
+      "rule": "14 CFR 107.51(b)"
+    },
+    {
+      "limit": "Exception near a structure",
+      "value": "Within a 400 foot radius of a structure, up to 400 feet above that structure's immediate uppermost limit",
+      "rule": "14 CFR 107.51(b)(1) and (b)(2)"
+    },
+    {
+      "limit": "Minimum flight visibility",
+      "value": "3 statute miles, observed from the location of the control station",
+      "rule": "14 CFR 107.51(c)"
+    },
+    {
+      "limit": "Minimum distance below cloud",
+      "value": "500 feet",
+      "rule": "14 CFR 107.51(d)(1)"
+    },
+    {
+      "limit": "Minimum horizontal distance from cloud",
+      "value": "2,000 feet",
+      "rule": "14 CFR 107.51(d)(2)"
+    },
+    {
+      "limit": "Maximum takeoff weight",
+      "value": "Less than 55 pounds, including everything on board or otherwise attached to the aircraft",
+      "rule": "14 CFR 107.3"
+    }
+  ],
+  "samples_heading": "Five questions in the format of the real test, with the rule each one comes from",
+  "samples_intro": "These are free and are published in full here, answers and explanations included. Each one names the regulation or FAA handbook section it is drawn from, so the answer can be checked against the source rather than taken on trust. One question is given from each of the five areas of operation.",
+  "samples": [
+    {
+      "area": "I. Regulations",
+      "question": "A tower is 300 feet tall. Working within 400 feet of it, how high may the aircraft fly?",
+      "options": [
+        "700 feet above the ground",
+        "400 feet above the ground",
+        "500 feet above the ground"
+      ],
+      "answer": "700 feet above the ground",
+      "explanation": "The 400 foot ceiling is lifted near a structure. Section 107.51(b) allows flight within a 400 foot radius of a structure at up to 400 feet above that structure's immediate uppermost limit, so 300 plus 400 gives 700 feet above ground level.",
+      "source_ref": "14 CFR 107.51(b)"
+    },
+    {
+      "area": "II. Airspace classification and operating requirements",
+      "question": "What ATC authorisation does a remote pilot need to operate in Class G airspace?",
+      "options": [
+        "None",
+        "A LAANC approval",
+        "A written waiver"
+      ],
+      "answer": "None",
+      "explanation": "Class G is uncontrolled airspace. A remote pilot does not need air traffic control authorisation to operate there, which is why it is where most part 107 flying happens.",
+      "source_ref": "FAA-G-8082-22, Chapter 2, Class G Airspace"
+    },
+    {
+      "area": "III. Weather",
+      "question": "In the METAR date and time group 161753Z, what do the first two digits give?",
+      "options": [
+        "The date",
+        "The hour",
+        "The month"
+      ],
+      "answer": "The date",
+      "explanation": "The date and time element of a METAR is a six digit group. The first two digits are the date of the month and the last four are the time, always given in coordinated universal time, which is what the Z denotes.",
+      "source_ref": "FAA-G-8082-22, Chapter 3a, METAR element 3, date and time of report"
+    },
+    {
+      "area": "IV. Loading and performance",
+      "question": "Which combination of conditions produces a high density altitude that may require a reduction in weight before flight?",
+      "options": [
+        "High elevation, high temperature and high humidity",
+        "Low elevation, low temperature and low humidity",
+        "High elevation, low temperature and low humidity"
+      ],
+      "answer": "High elevation, high temperature and high humidity",
+      "explanation": "All three raise density altitude, which thins the air the propellers work against and cuts performance. Together they may mean the aircraft has to fly lighter than its published maximum gross takeoff weight.",
+      "source_ref": "FAA-G-8082-22, Chapter 4, maximum gross takeoff weight"
+    },
+    {
+      "area": "V. Operations",
+      "question": "After deviating from a rule because of an in-flight emergency, when must the remote pilot report it?",
+      "options": [
+        "Only when the FAA asks for a report",
+        "Within ten days of the deviation, in writing",
+        "Immediately by radio to the nearest control tower"
+      ],
+      "answer": "Only when the FAA asks for a report",
+      "explanation": "An emergency permits a deviation from the rules of part 107 to the extent needed to meet it. A written report is then required only if the FAA requests one, which candidates frequently get wrong by assuming an automatic filing deadline.",
+      "source_ref": "FAA-G-8082-22, Chapter 5, Emergency Procedures"
+    }
+  ],
+  "mistakes_heading": "Where candidates lose marks",
+  "mistakes": [
+    "Treating 400 feet as an absolute ceiling. It is not: 14 CFR 107.51(b) lifts it near a structure, and the arithmetic that follows is a standard exam question.",
+    "Studying regulations hardest. Operations is the largest area at 35 to 45 percent of the test, and regulations is 15 to 25 percent, so the weighting rewards the opposite priority.",
+    "Confusing the two ages. A person may sit the test at 14 but cannot hold the certificate until 16.",
+    "Assuming the certificate lapses. It does not expire on a fixed date, but the privileges cannot be exercised unless the knowledge recency requirement has been met within the previous 24 calendar months.",
+    "Reading cloud clearance as a single number. It is two: 500 feet below the cloud and 2,000 feet horizontally from it.",
+    "Learning answers rather than charts. Airspace and chart reading sit across two areas of operation and cannot be memorised from a question bank alone."
+  ],
+  "faq_heading": "Common questions",
+  "faq": [
+    {
+      "q": "How many questions are on the FAA Part 107 exam?",
+      "a": "60. The FAA Airman Knowledge Testing Matrix lists the UAG test as 60 questions with 2.0 hours allotted."
+    },
+    {
+      "q": "What score do you need to pass the Part 107 exam?",
+      "a": "70 percent, which is 42 of the 60 questions."
+    },
+    {
+      "q": "How much does the Part 107 test cost?",
+      "a": "The FAA states that Knowledge Testing Centers charge approximately 175 US dollars for the initial aeronautical knowledge test. The fee is set by the testing centre, not by the FAA, so confirm it when booking."
+    },
+    {
+      "q": "How old do you have to be?",
+      "a": "You must be at least 14 years old to sit the test, and at least 16 years old to be issued the remote pilot certificate under 14 CFR 107.61(a)."
+    },
+    {
+      "q": "What happens if you fail?",
+      "a": "A 14 day waiting period applies before retesting. No instructor endorsement or other written authorisation is required to retake the UAG test, and the failed test report must be presented to the testing centre."
+    },
+    {
+      "q": "Does the certificate expire?",
+      "a": "The privileges of a remote pilot in command may not be exercised unless the holder has passed the initial test or completed recurrent training within the previous 24 calendar months, under 14 CFR 107.65."
+    },
+    {
+      "q": "Which documents is the test set from?",
+      "a": "14 CFR part 107, the Remote Pilot Airman Certification Standards FAA-S-ACS-10B, and the FAA Remote Pilot Study Guide FAA-G-8082-22. All three are published free by the FAA and are linked in the sources list on this page."
+    },
+    {
+      "q": "Does BiDaFa sell an app for this exam?",
+      "a": "Not yet. BiDaFa Ltd is building a practice app for this exam and it is not available to download. This page is published as free reference material and is useful whether or not that app ever ships."
+    }
+  ],
+  "publisher_note_heading": "Who publishes this page",
+  "publisher_note": "This page is published by BiDaFa Ltd, a software company registered in England and Wales, company number 17388837. BiDaFa is building a practice app for this exam. That app is in development and is not yet available to download, so this page makes no claim about it, states no download or user numbers, and carries no rating or review. If that changes, the change will be dated on this page.",
+  "disclaimer": "BiDaFa Ltd is not affiliated with, endorsed by or approved by the Federal Aviation Administration, the United States Department of Transportation, PSI Services or any United States government agency. This page is independent reference material compiled from published federal sources. Always confirm current requirements with the FAA before booking a test."
+}

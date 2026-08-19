@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{#
+  Editorial method page. Structure only: every sentence lives in site.json under
+  "methodology". Sections are a flat list of {h, paragraphs} so adding one is a data edit.
+
+  This page exists because a claim about accuracy that cannot be checked is worth nothing,
+  and because a described process is the one piece of evidence a company with no shipped
+  product and no reviews can still offer.
+#}
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ data.hero.eyebrow }}</p>
+    <h1>{{ data.hero.h1 }}</h1>
+    <p class="lead">{{ data.hero.lead }}</p>
+  </div>
+</section>
+
+{% for section in data.sections %}
+<section class="band {% if loop.index is odd %}band-alt{% endif %}" aria-labelledby="s{{ loop.index }}-h">
+  <div class="wrap prose">
+    <h2 id="s{{ loop.index }}-h">{{ section.h }}</h2>
+    {% for p in section.paragraphs %}
+    <p>{{ p }}</p>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+
+<section id="contact" class="band" aria-labelledby="contact-h">
+  <div class="wrap prose">
+    <h2 id="contact-h">{{ labels.contact_heading }}</h2>
+    <p>{{ data.contact_line }}</p>
+    <p class="email-plain"><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+  </div>
+</section>
+
+{% endblock %}
