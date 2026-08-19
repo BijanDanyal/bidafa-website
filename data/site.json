@@ -21,6 +21,13 @@
     }
   },
 
+  "entity": {
+    "_comment": "sameAs is how an assistant resolves the website, the legal company and any future store account into ONE entity instead of three unrelated strings. Every URL here must be a profile that genuinely exists and that we control or that is a public record about us. Add store listings the day they exist, never before.",
+    "same_as": [
+      "https://find-and-update.company-information.service.gov.uk/company/17388837"
+    ]
+  },
+
   "contact": {
     "email": "BiDaFa@bidafaapp.com",
     "email_confirmed": true,
@@ -32,14 +39,60 @@
     "locale": "en_GB",
     "lang": "en-GB",
     "seo_title": "BiDaFa Ltd | Practice apps for licensing and certification exams",
-    "seo_description": "BiDaFa Ltd is a software company registered in England, building practice and revision apps for occupational licensing and certification exams. First apps in development.",
+    "seo_description": "BiDaFa Ltd is a software company registered in England, building practice and revision apps for occupational licensing and certification exams. Free, sourced reference pages for the exams themselves. First apps in development.",
     "og_site_name": "BiDaFa"
   },
 
+  "labels": {
+    "_comment": "Shared structural labels. They live here rather than in the templates because iron rule 3 says a template carries structure and never copy, and because a per-exam file should not have to repeat a column heading.",
+    "quick_answer": "In one sentence",
+    "exam_facts_heading": "Exam facts",
+    "checked_on_prefix": "Every figure on this page was checked against the source named beside it on",
+    "col_item": "Item",
+    "col_value": "Value",
+    "col_source": "Source",
+    "col_limit": "Limit",
+    "col_rule": "Rule",
+    "col_area": "Area of operation",
+    "col_weight": "Share of the test",
+    "col_detail": "What it covers",
+    "also_known_as": "Also known as",
+    "col_grants": "Certificate granted",
+    "col_governed_by": "Governed by",
+    "methodology_link_label": "How we write and check these questions",
+    "contact_heading": "Contact",
+    "sample_answer": "Correct answer",
+    "sample_explanation": "Why",
+    "sample_source": "Source",
+    "sources_heading": "Sources for this page",
+    "disclaimer_heading": "Independence and disclaimer",
+    "exam_meta_heading": "At a glance"
+  },
+
+  "crawlers": {
+    "_comment": "robots.txt is generated from this list. Named agents are listed explicitly because the sourced guidance is that a bare wildcard is not enough: OpenAI documents OAI-SearchBot as governing eligibility to appear in ChatGPT Search, and GPTBot as governing potential future model training, and the two are controlled independently. Both are deliberately allowed. Removing an agent from this list is a decision to become invisible to that assistant, so do not prune it casually.",
+    "agents": [
+      { "agent": "OAI-SearchBot", "note": "OpenAI. Governs eligibility to be shown in ChatGPT Search answers." },
+      { "agent": "ChatGPT-User", "note": "OpenAI. Fetches a page when a user's request causes ChatGPT to visit it." },
+      { "agent": "GPTBot", "note": "OpenAI. Content that may be used in future foundation model training." },
+      { "agent": "ClaudeBot", "note": "Anthropic. General crawler." },
+      { "agent": "Claude-User", "note": "Anthropic. Fetches a page on behalf of a user request." },
+      { "agent": "Claude-SearchBot", "note": "Anthropic. Search indexing." },
+      { "agent": "PerplexityBot", "note": "Perplexity. Search indexing." },
+      { "agent": "Google-Extended", "note": "Google. Training and grounding for Gemini. Separate from Googlebot." },
+      { "agent": "Applebot-Extended", "note": "Apple. Training use. Separate from Applebot." },
+      { "agent": "Bingbot", "note": "Microsoft. Feeds Bing and Copilot." },
+      { "agent": "Googlebot", "note": "Google. Ordinary search indexing." },
+      { "agent": "Applebot", "note": "Apple. Ordinary indexing, and Siri and Spotlight." },
+      { "agent": "*", "note": "Everything else." }
+    ]
+  },
+
   "nav": [
-    { "label": "What we do", "href": "#what-we-do" },
-    { "label": "How we build", "href": "#how-we-build" },
-    { "label": "Contact", "href": "#contact" }
+    { "label": "Exams", "href": "/exams/faa-part-107/" },
+    { "label": "How we write questions", "href": "/how-we-write-questions/" },
+    { "label": "About", "href": "/#about" },
+    { "label": "Contact", "href": "/#contact" }
   ],
 
   "home": {
@@ -50,11 +103,24 @@
       "status": "Our first apps are in development and are not yet available to download."
     },
 
+    "exams": {
+      "heading": "Exam reference pages",
+      "intro": "Free reference pages for the exams themselves, with every figure cited to the regulator and dated. These are published whether or not an app of ours exists for the exam.",
+      "entries": [
+        {
+          "label": "FAA Part 107 exam (Unmanned Aircraft General - Small, UAG)",
+          "href": "/exams/faa-part-107/",
+          "summary": "60 questions, 2 hours, 70 percent to pass. Topic weightings from the FAA Airman Certification Standards, the operating limits from 14 CFR 107.51, and five worked sample questions."
+        }
+      ]
+    },
+
     "what_we_do": {
       "heading": "What we do",
       "paragraphs": [
         "Occupational licensing exams decide whether someone is allowed to do their job. They are set from published statutes, regulations and official training manuals, they are often sat once or twice a year, and failing one can cost a person a season of work.",
-        "The study material for them is frequently poor. BiDaFa Ltd exists to build the practice apps those candidates actually need: accurate, specific to one jurisdiction and one exam, and derived from the official source rather than from a general purpose question bank."
+        "The study material for them is frequently poor. BiDaFa Ltd exists to build the practice apps those candidates actually need: accurate, specific to one jurisdiction and one exam, and derived from the official source rather than from a general purpose question bank.",
+        "We publish the exam reference pages free, and we publish the method we use to write questions, because a claim about accuracy that cannot be checked is worth nothing."
       ]
     },
 
@@ -90,6 +156,61 @@
       "paragraph": "If you would like to know when our first apps launch, or you work for a training provider or an awarding body and want to talk, please email us.",
       "cta_label": "Email BiDaFa"
     }
+  },
+
+  "methodology": {
+    "seo_title": "How BiDaFa writes and checks exam questions | BiDaFa Ltd",
+    "seo_description": "The method BiDaFa Ltd uses to write practice questions for licensing exams: which documents each question is drawn from, how the source is recorded per question, how figures are checked and dated, and how to report an error.",
+    "hero": {
+      "eyebrow": "Editorial method",
+      "h1": "How we write and check exam questions",
+      "lead": "This page describes the process, so that a claim about accuracy can be checked rather than taken on trust. It describes how we work today, on material we have built. It is not a claim about a shipped product, because we do not have one yet."
+    },
+    "sections": [
+      {
+        "h": "Every question is written from a named source document",
+        "paragraphs": [
+          "For each exam we identify the documents the exam itself is set from: the regulation, the awarding body's published standards, and the official study guide where one exists. For the FAA Part 107 exam those are 14 CFR part 107, the Remote Pilot Airman Certification Standards FAA-S-ACS-10B, and the FAA Remote Pilot Study Guide FAA-G-8082-22.",
+          "Questions are written from the text of those documents. They are not collected from candidates, not scraped from other question banks, and not recalled from a real sitting. We do not publish or sell real exam questions, and we would not, because doing so breaches the awarding body's terms and teaches recall rather than understanding."
+        ]
+      },
+      {
+        "h": "Each question records the passage it came from",
+        "paragraphs": [
+          "A question is stored with a reference to the specific section it was drawn from, for example 14 CFR 107.51(b), together with the passage text itself. That reference travels with the question into the explanation, so a candidate who doubts an answer can go and read the rule.",
+          "This is also what makes review possible at scale. When a source document changes, the questions attached to the changed section can be found directly instead of by rereading the whole bank."
+        ]
+      },
+      {
+        "h": "Figures are checked against the source and dated",
+        "paragraphs": [
+          "Any number stated as fact, a fee, a pass mark, a question count, a time limit, carries the source that states it and the date it was last checked. Where the regulator publishes a figure as approximate, we repeat it as approximate rather than rounding it into something that looks more precise than it is.",
+          "A figure we cannot source does not go on the page at all. That rule is enforced by the build: the site will not compile if a published figure is not tied to a listed source."
+        ]
+      },
+      {
+        "h": "Counts are stated honestly",
+        "paragraphs": [
+          "Where we state the size of a question bank, the figure is the honest count of questions written for that exam. We do not inflate a bank size by counting filler, and any derived total is derived from the honest count.",
+          "We publish no download numbers, user numbers, ratings, testimonials or pass rates, because we have none. When we have them and can evidence them, we will publish them with their source, and not before."
+        ]
+      },
+      {
+        "h": "How to report an error",
+        "paragraphs": [
+          "If you find a mistake on a reference page or in a question, email the address below with the page and the specific figure or question. Reports about a factual error take priority over everything else we are doing.",
+          "Corrections are made to the source data and the page is rebuilt, and the check date on the affected page moves to the date of the correction."
+        ]
+      },
+      {
+        "h": "What we do not do",
+        "paragraphs": [
+          "We do not describe ourselves as approved, endorsed or affiliated by any regulator or awarding body, because we are not. We do not claim to be the best, the most accurate or the most up to date, because those are not statements anyone can check.",
+          "We do not publish reviews or ratings we have solicited, and we will not ask anyone to write one."
+        ]
+      }
+    ],
+    "contact_line": "Corrections and questions about this method go to the address below."
   },
 
   "footer": {

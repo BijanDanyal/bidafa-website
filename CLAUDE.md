@@ -33,6 +33,44 @@ public, it is deployed, and it must never be able to reach into `exam-factory` o
    dependency: a toolchain failure on the author's machine must never be able to take the
    live site down.
 
+## The audience is the machine (locked by Bijan 2026-08-19)
+
+The site exists so that an AI assistant asked "what app should I use to study for exam X"
+can name ours and prove why. Bijan's direction, verbatim: build it *"100% for the AI's"*,
+and treat human readability as a concern only where it also serves that. Do not spend
+effort on visual polish. Do spend it on sourced facts, extractable structure, correct
+markup and crawler access.
+
+Two consequences that are easy to get backwards:
+
+1. **Do not make it hostile to humans either.** Assistants send real people to the site
+   with tracked links, and thin machine-bait content is a documented reason assistants
+   withhold a recommendation. Plain, dense and factual satisfies both. Ugly is fine;
+   worthless is not.
+2. **The honesty rule is the growth strategy, not a tax on it.** Asked independently, all
+   three assistants named unverifiable superlatives, invented counts, fake freshness dates
+   and self-asserted ratings as reasons they would NOT recommend an app. Iron rule 1 is
+   therefore load bearing for the commercial goal, not merely for ethics. `GEO.md` records
+   the evidence.
+
+## What the build now refuses to publish
+
+Beyond the gates already listed, `build.py` enforces two rules that exist to keep the above
+true when nobody is watching:
+
+- **A figure with no source is not publishable.** Every entry in an exam page's `stats`
+  must cite an `id` present in that page's own `sources` list, every sample question must
+  carry the rule it was drawn from, and its stated answer must be one of the options it
+  actually offers. `checked_on` must be a real date and must not be in the future.
+- **Product markup is blocked while there is no product.** The JSON-LD gate fails the build
+  if `SoftwareApplication`, `MobileApplication`, `Offer`, `AggregateRating` or `Review`
+  appears in the graph. Remove that block only in the same change that ships a real app,
+  and only for values that can be evidenced.
+
+**Do not prune `crawlers.agents` in `data/site.json` casually.** Each named agent is the
+documented lever for one assistant's visibility, and dropping one is a decision to become
+invisible to that assistant, which is silent from our side and total from theirs.
+
 ## The honest-count rule (governs the future per-exam pages)
 
 When product pages are generated from a pack's `website.json`, **every bank-size figure
@@ -48,12 +86,17 @@ See `PACK-INTERFACE.md` for the measured shape of `website.json`.
 
 ## Layout
 
-    data/site.json      every fact and every line of copy
-    data/pages.json     page manifest; sitemap is generated from it
+    data/site.json      every fact and every line of copy, plus labels and crawler policy
+    data/pages.json     page manifest; sitemap, robots.txt and llms.txt come from it
+    data/exams/*.json   one file per exam reference page. See EXAM-PAGE-INTERFACE.md
     templates/          Jinja2, autoescaped, structure only
     assets/             one stylesheet, one favicon, no fonts, no JavaScript
     build.py            renders data + templates into docs/, then gates the output
     docs/               BUILD OUTPUT, committed, served by GitHub Pages. Never hand-edit.
+
+    GEO.md              why the site is shaped this way, and what is NOT built yet
+    EXAM-PAGE-INTERFACE.md   how to add an exam: the field contract and the gates
+    PACK-INTERFACE.md   the measured shape of a pack's website.json, for future product pages
 
 ## Build
 

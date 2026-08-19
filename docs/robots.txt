@@ -1,3 +1,52 @@
+# OpenAI. Governs eligibility to be shown in ChatGPT Search answers.
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI. Fetches a page when a user's request causes ChatGPT to visit it.
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI. Content that may be used in future foundation model training.
+User-agent: GPTBot
+Allow: /
+
+# Anthropic. General crawler.
+User-agent: ClaudeBot
+Allow: /
+
+# Anthropic. Fetches a page on behalf of a user request.
+User-agent: Claude-User
+Allow: /
+
+# Anthropic. Search indexing.
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity. Search indexing.
+User-agent: PerplexityBot
+Allow: /
+
+# Google. Training and grounding for Gemini. Separate from Googlebot.
+User-agent: Google-Extended
+Allow: /
+
+# Apple. Training use. Separate from Applebot.
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft. Feeds Bing and Copilot.
+User-agent: Bingbot
+Allow: /
+
+# Google. Ordinary search indexing.
+User-agent: Googlebot
+Allow: /
+
+# Apple. Ordinary indexing, and Siri and Spotlight.
+User-agent: Applebot
+Allow: /
+
+# Everything else.
 User-agent: *
 Allow: /
 

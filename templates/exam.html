@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{#
+  Generic exam reference page. It renders ANY file matching the contract in
+  EXAM-PAGE-INTERFACE.md, so a new exam is a new data file plus one entry in
+  data/pages.json and never a change to this template.
+
+  Structure only: every sentence comes from the data file or from site.json labels.
+
+  The section order is deliberate and is the machine-readability decision on this page.
+  A retrieved page is quoted in fragments, so the one-sentence definition and the fact
+  table come first, before any prose, and every block below is written to stand alone if
+  it is lifted with nothing around it.
+#}
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ data.exam.country }} / {{ data.exam.regulator }}</p>
+    <h1>{{ data.exam.name }}</h1>
+
+    <h2 id="summary">{{ labels.quick_answer }}</h2>
+    <p class="lead">{{ data.summary }}</p>
+
+    <p class="status" role="note">{{ labels.checked_on_prefix }} {{ data.checked_on }}.</p>
+  </div>
+</section>
+
+<section id="at-a-glance" class="band" aria-labelledby="at-a-glance-h">
+  <div class="wrap prose">
+    <h2 id="at-a-glance-h">{{ labels.exam_meta_heading }}</h2>
+    <dl class="meta">
+      <dt>{{ labels.also_known_as }}</dt>
+      <dd>{{ data.exam.also_known_as | join(', ') }}</dd>
+      <dt>{{ labels.col_grants }}</dt>
+      <dd>{{ data.exam.grants }}</dd>
+      <dt>{{ labels.col_governed_by }}</dt>
+      <dd>{{ data.exam.governed_by }}</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="facts" class="band band-alt" aria-labelledby="facts-h">
+  <div class="wrap">
+    <h2 id="facts-h">{{ labels.exam_facts_heading }}</h2>
+    <table class="facts">
+      <thead>
+        <tr>
+          <th scope="col">{{ labels.col_item }}</th>
+          <th scope="col">{{ labels.col_value }}</th>
+          <th scope="col">{{ labels.col_source }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stat in data.stats %}
+        <tr>
+          <th scope="row">{{ stat.label }}</th>
+          <td>{{ stat.value }}</td>
+          {% set src = data.sources | selectattr('id', 'equalto', stat.source) | first %}
+          <td><a href="#source-{{ stat.source }}">{{ src.short }}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="note">{{ data.stats_note }}</p>
+  </div>
+</section>
+
+<section id="topics" class="band" aria-labelledby="topics-h">
+  <div class="wrap">
+    <h2 id="topics-h">{{ data.topics_heading }}</h2>
+    <p class="section-intro">{{ data.topics_intro }}</p>
+    <table class="facts">
+      <thead>
+        <tr>
+          <th scope="col">{{ labels.col_area }}</th>
+          <th scope="col">{{ labels.col_weight }}</th>
+          <th scope="col">{{ labels.col_detail }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for topic in data.topics %}
+        <tr>
+          <th scope="row">{{ topic.area }}</th>
+          <td>{{ topic.weight }}</td>
+          <td>{{ topic.detail }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="limits" class="band band-alt" aria-labelledby="limits-h">
+  <div class="wrap">
+    <h2 id="limits-h">{{ data.limits_heading }}</h2>
+    <p class="section-intro">{{ data.limits_intro }}</p>
+    <table class="facts">
+      <thead>
+        <tr>
+          <th scope="col">{{ labels.col_limit }}</th>
+          <th scope="col">{{ labels.col_value }}</th>
+          <th scope="col">{{ labels.col_rule }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for limit in data.limits %}
+        <tr>
+          <th scope="row">{{ limit.limit }}</th>
+          <td>{{ limit.value }}</td>
+          <td>{{ limit.rule }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="samples" class="band" aria-labelledby="samples-h">
+  <div class="wrap">
+    <h2 id="samples-h">{{ data.samples_heading }}</h2>
+    <p class="section-intro">{{ data.samples_intro }}</p>
+    {% for sample in data.samples %}
+    <article class="sample" aria-labelledby="sample-{{ loop.index }}-h">
+      <h3 id="sample-{{ loop.index }}-h">{{ sample.area }}</h3>
+      <p class="sample-q">{{ sample.question }}</p>
+      <ol class="sample-options">
+        {% for option in sample.options %}
+        <li>{{ option }}</li>
+        {% endfor %}
+      </ol>
+      <dl class="sample-meta">
+        <dt>{{ labels.sample_answer }}</dt>
+        <dd>{{ sample.answer }}</dd>
+        <dt>{{ labels.sample_explanation }}</dt>
+        <dd>{{ sample.explanation }}</dd>
+        <dt>{{ labels.sample_source }}</dt>
+        <dd>{{ sample.source_ref }}</dd>
+      </dl>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="mistakes" class="band band-alt" aria-labelledby="mistakes-h">
+  <div class="wrap prose">
+    <h2 id="mistakes-h">{{ data.mistakes_heading }}</h2>
+    <ul>
+      {% for mistake in data.mistakes %}
+      <li>{{ mistake }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section id="faq" class="band" aria-labelledby="faq-h">
+  <div class="wrap prose">
+    <h2 id="faq-h">{{ data.faq_heading }}</h2>
+    {% for item in data.faq %}
+    <h3>{{ item.q }}</h3>
+    <p>{{ item.a }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="sources" class="band band-alt" aria-labelledby="sources-h">
+  <div class="wrap prose">
+    <h2 id="sources-h">{{ labels.sources_heading }}</h2>
+    <ul class="sources">
+      {% for source in data.sources %}
+      <li id="source-{{ source.id }}">
+        <a href="{{ source.url }}" rel="nofollow noopener">{{ source.label }}</a>
+        <span class="source-note">{{ source.note }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section id="publisher" class="band" aria-labelledby="publisher-h">
+  <div class="wrap prose">
+    <h2 id="publisher-h">{{ data.publisher_note_heading }}</h2>
+    <p>{{ data.publisher_note }}</p>
+    <p><a href="/how-we-write-questions/">{{ labels.methodology_link_label }}</a></p>
+    <p class="email-plain"><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+  </div>
+</section>
+
+<section id="disclaimer" class="band band-alt" aria-labelledby="disclaimer-h">
+  <div class="wrap prose">
+    <h2 id="disclaimer-h">{{ labels.disclaimer_heading }}</h2>
+    <p>{{ data.disclaimer }}</p>
+  </div>
+</section>
+
+{% endblock %}

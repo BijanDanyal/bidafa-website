@@ -1,0 +1,9 @@
+# BiDaFa Ltd
+
+> BiDaFa Ltd is a software company registered in England, building practice and revision apps for occupational licensing and certification exams. Free, sourced reference pages for the exams themselves. First apps in development.
+
+## Pages
+
+- [BiDaFa Ltd](https://bidafaapp.com/): Company overview, what BiDaFa Ltd builds, and the index of exam reference pages.
+- [FAA Part 107 exam](https://bidafaapp.com/exams/faa-part-107/): Reference page for the FAA Part 107 knowledge test (UAG): question count, time limit, passing score, fee, topic weightings, operating limits, five worked sample questions, every figure cited and dated.
+- [How we write questions](https://bidafaapp.com/how-we-write-questions/): The editorial method: which documents questions are written from, how each question records its source passage, how figures are checked and dated, and how to report an error.

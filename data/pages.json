@@ -1,5 +1,5 @@
 {
-  "_comment": "Page manifest. build.py renders one output file per entry, and sitemap.xml is generated from this list. Adding the future per-exam product pages means appending entries here (one per pack, data_file pointing at a generated json derived from that pack's website.json) plus one new template. No change to build.py is required for that, which is the whole point of the manifest.",
+  "_comment": "Page manifest. build.py renders one output file per entry, and sitemap.xml, llms.txt and robots.txt are generated from this list plus data/site.json. A page reads its content from EITHER data_key (a key inside site.json) OR data_file (a standalone json file under data/). Adding an exam is one new file under data/exams/ plus one entry here: no template change and no build.py change.",
 
   "pages": [
     {
@@ -10,7 +10,35 @@
       "data_key": "home",
       "seo_title_key": "site.seo_title",
       "seo_description_key": "site.seo_description",
+      "llms_note": "Company overview, what BiDaFa Ltd builds, and the index of exam reference pages.",
       "sitemap": { "changefreq": "monthly", "priority": "1.0" }
+    },
+    {
+      "id": "exam-faa-part-107",
+      "template": "exam.html",
+      "output": "exams/faa-part-107/index.html",
+      "url_path": "/exams/faa-part-107/",
+      "data_file": "exams/faa-part-107.json",
+      "kind": "exam",
+      "article": true,
+      "breadcrumb": "FAA Part 107 exam",
+      "seo_title_key": "data.seo_title",
+      "seo_description_key": "data.seo_description",
+      "llms_note": "Reference page for the FAA Part 107 knowledge test (UAG): question count, time limit, passing score, fee, topic weightings, operating limits, five worked sample questions, every figure cited and dated.",
+      "sitemap": { "changefreq": "monthly", "priority": "0.9" }
+    },
+    {
+      "id": "methodology",
+      "template": "methodology.html",
+      "output": "how-we-write-questions/index.html",
+      "url_path": "/how-we-write-questions/",
+      "data_key": "methodology",
+      "article": true,
+      "breadcrumb": "How we write questions",
+      "seo_title_key": "methodology.seo_title",
+      "seo_description_key": "methodology.seo_description",
+      "llms_note": "The editorial method: which documents questions are written from, how each question records its source passage, how figures are checked and dated, and how to report an error.",
+      "sitemap": { "changefreq": "yearly", "priority": "0.7" }
     }
   ]
 }

@@ -7,6 +7,11 @@ A static site with no JavaScript and no external requests. Data and copy live in
 templates hold structure only, and `build.py` renders them into `docs/`, which GitHub Pages
 serves directly.
 
+The site is built for machine readers first: the audience that matters is the AI assistants
+people ask which app to study an exam with. That is the reason for the sourced-and-dated
+fact tables, the explicit crawler policy in `robots.txt`, and the build gate that refuses to
+publish a figure with no source. See `GEO.md`.
+
 ## Build
 
     python3 -m venv .venv
@@ -28,17 +33,30 @@ The build fails, and writes no output, if any of these do not hold:
 - No U+2014 em-dash in the sources or the rendered output.
 - Required company, contact and site fields are present and non-empty.
 - Every HTML tag in the output is balanced.
-- The JSON-LD structured data survives rendering and reparses as valid JSON with its
-  required keys.
+- The JSON-LD structured data survives rendering, reparses as valid JSON, contains an
+  Organization node carrying the identity fields, and contains none of
+  `SoftwareApplication`, `Offer`, `AggregateRating` or `Review`, because nothing has
+  shipped and that markup would assert what cannot be evidenced.
 - Every root-relative `href` and `src` resolves to a file that exists in the output.
+- Every figure published on an exam page names a source that is in that page's own sources
+  list, every sample question cites the rule it came from, and its stated answer is one of
+  the options actually offered.
 - For `--production` only: `contact.email_confirmed` is true.
 
 ## Adding pages
 
-Append an entry to `data/pages.json` and add its template. The sitemap is generated from
-that manifest, so it stays correct automatically. `build.py` should not need editing.
+Append an entry to `data/pages.json` and add its template. The sitemap, `robots.txt` and
+`llms.txt` are generated from that manifest plus `data/site.json`, so they stay correct
+automatically. `build.py` should not need editing.
 
-For the planned per-exam product pages, read `PACK-INTERFACE.md` first: it records the
+**Adding an exam reference page is one new file plus one manifest entry, with no template
+and no code change.** Read `EXAM-PAGE-INTERFACE.md`: it holds the field contract, which
+rules the build enforces, and the rules the build cannot enforce that are yours to keep.
+
+`GEO.md` records why the site is shaped this way, what is deliberately not built yet, and
+what would have to be true to build it.
+
+For the planned per-exam PRODUCT pages, read `PACK-INTERFACE.md` first: it records the
 measured shape of the `website.json` files those pages will be generated from, including
 three traps that will otherwise bite.
 
