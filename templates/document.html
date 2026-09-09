@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{#
+  Reusable structured document page. Used by the privacy policy and the support page, and
+  intended for every policy page after them.
+
+  Structure only: every sentence lives in data/site.json under the page's own key, per iron
+  rule 3, so the next document is a data edit rather than a new template.
+
+  A section renders whichever blocks it carries:
+    paragraphs     prose
+    steps          an ordered list, used where the order IS the instruction
+    points         an unordered list
+    company_facts  a definition list whose VALUES come from the company block, so the
+                   registered details required by law are never retyped as prose and can
+                   never drift away from the Companies House record they are checked
+                   against. The keys in the data are labels, not values.
+#}
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ data.hero.eyebrow }}</p>
+    <h1>{{ data.hero.h1 }}</h1>
+    <p class="lead">{{ data.hero.lead }}</p>
+    {% if data.hero.get('status') %}
+    <p class="status" role="note">{{ data.hero.status }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% if data.get('effective_on') %}
+<section class="band doc-date">
+  <div class="wrap">
+    <p>{{ data.effective_label }}
+      <time datetime="{{ data.effective_on }}">{{ data.effective_on_human }}</time>
+    </p>
+  </div>
+</section>
+{% endif %}
+
+{% for section in data.sections %}
+<section class="band {% if loop.index is odd %}band-alt{% endif %}" aria-labelledby="s{{ loop.index }}-h">
+  <div class="wrap prose">
+    <h2 id="s{{ loop.index }}-h">{{ section.h }}</h2>
+
+    {% for p in section.get('paragraphs') or [] %}
+    <p>{{ p }}</p>
+    {% endfor %}
+
+    {% if section.get('company_facts') %}
+    <dl class="facts-list">
+      <dt>{{ section.company_facts.legal_name }}</dt>
+      <dd>{{ company.legal_name }}</dd>
+      <dt>{{ section.company_facts.company_number }}</dt>
+      <dd>{{ company.company_number }}</dd>
+      <dt>{{ section.company_facts.jurisdiction }}</dt>
+      <dd>{{ company.jurisdiction }}</dd>
+      <dt>{{ section.company_facts.office }}</dt>
+      <dd>{{ company.registered_office.street }}, {{ company.registered_office.locality }},
+          {{ company.registered_office.region }}, {{ company.registered_office.postcode }}</dd>
+      <dt>{{ section.company_facts.email }}</dt>
+      <dd><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></dd>
+    </dl>
+    {% endif %}
+
+    {% if section.get('steps') %}
+    <ol class="steps">
+      {% for step in section.steps %}
+      <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+
+    {% if section.get('points') %}
+    <ul class="points">
+      {% for point in section.points %}
+      <li>{{ point }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% for p in section.get('after') or [] %}
+    <p>{{ p }}</p>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+
+<section id="contact" class="band" aria-labelledby="contact-h">
+  <div class="wrap prose">
+    <h2 id="contact-h">{{ data.contact_heading }}</h2>
+    <p>{{ data.contact_line }}</p>
+    <p class="email-plain"><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+  </div>
+</section>
+
+{% endblock %}

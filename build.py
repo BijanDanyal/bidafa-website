@@ -21,7 +21,7 @@ import json
 import re
 import shutil
 import sys
-from datetime import date
+from datetime import date, datetime
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -42,6 +42,14 @@ VOID_TAGS = {
     "area", "base", "br", "col", "embed", "hr", "img", "input",
     "link", "meta", "param", "source", "track", "wbr",
 }
+
+ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+# Dates a page states about ITSELF, as opposed to dates inside prose. Each one is a claim
+# about when a document came into force or when its facts were last checked, so each one is
+# gated. The paired *_human field exists so the page can read naturally without the machine
+# readable value being retyped, which is exactly the pair most likely to drift apart.
+SELF_DATED_FIELDS = ("effective_on", "checked_on")
 
 
 class BuildError(Exception):
@@ -72,8 +80,19 @@ def resolve(dotted: str, root: dict):
 
 
 def require(cfg: dict, dotted: str) -> None:
+    """A required field that is present but empty is the same outage as a missing one.
+
+    An empty LIST matters as much as an empty string here: footer.links is rendered by
+    base.html on every page, so losing it takes out the whole site, and it must fail as a
+    sentence naming the field rather than as a Jinja traceback naming a loop variable.
+    """
     value = resolve(dotted, cfg)
-    if value is None or (isinstance(value, str) and not value.strip()):
+    empty = (
+        value is None
+        or (isinstance(value, str) and not value.strip())
+        or (isinstance(value, (list, dict, tuple)) and not value)
+    )
+    if empty:
         raise BuildError(f"site.json '{dotted}' is empty, and the site cannot be built without it")
 
 
@@ -294,6 +313,53 @@ def gate_jsonld(path: Path) -> list[str]:
     return []
 
 
+def gate_page_dates(cfg: dict, pages_cfg: dict) -> list[str]:
+    """A date a page states about itself is a claim, so it is checked like one.
+
+    The effective date of a privacy policy is the single most consequential date on this
+    site: users and app store reviewers rely on it to know which version of the document
+    binds them. A typo, or a date in the future, publishes something untrue about when the
+    policy came into force. Nothing else in the build would notice.
+
+    The human readable twin is checked for the same year rather than parsed, which is
+    enough to catch the realistic failure: someone edits the ISO date and forgets the
+    sentence beside it, so the page and its markup disagree about the date.
+
+    Runs before rendering, so a bad date is a plain sentence rather than a traceback, and
+    nothing reaches docs/ on the way out.
+    """
+    problems: list[str] = []
+    for entry in pages_cfg["pages"]:
+        data = resolve(entry["data_key"], cfg)
+        if not isinstance(data, dict):
+            continue
+        for field in SELF_DATED_FIELDS:
+            raw = data.get(field)
+            if raw is None:
+                continue
+            value = str(raw)
+            if not ISO_DATE.match(value):
+                problems.append(f"{entry['id']}: {field} '{value}' is not a YYYY-MM-DD date")
+                continue
+            try:
+                parsed = datetime.strptime(value, "%Y-%m-%d").date()
+            except ValueError:
+                problems.append(f"{entry['id']}: {field} '{value}' is not a real date")
+                continue
+            if parsed > date.today():
+                problems.append(
+                    f"{entry['id']}: {field} '{value}' is in the future, so the page would "
+                    "state that it came into force on a day that has not happened"
+                )
+            human = data.get(field + "_human")
+            if human is not None and value[:4] not in str(human):
+                problems.append(
+                    f"{entry['id']}: {field} is '{value}' but {field}_human reads "
+                    f"'{human}', and the two do not agree on the year"
+                )
+    return problems
+
+
 def gate_local_refs(out_dir: Path) -> list[str]:
     problems = []
     for page in out_dir.rglob("*.html"):
@@ -334,6 +400,9 @@ def main() -> int:
             "site.seo_title",
             "site.seo_description",
             "footer.legal",
+            # Rendered by base.html on every page, and the two URLs an app store listing
+            # points at. Absent, the site does not build at all.
+            "footer.links",
         ):
             require(cfg, field)
 
@@ -350,6 +419,10 @@ def main() -> int:
             raise BuildError(
                 "{0} found in source files:\n  ".format(BANNED_NAME) + "\n  ".join(source_hits)
             )
+
+        date_problems = gate_page_dates(cfg, pages_cfg)
+        if date_problems:
+            raise BuildError("page dates failed their checks:\n  " + "\n  ".join(date_problems))
 
         if OUT_DIR.exists():
             shutil.rmtree(OUT_DIR)
@@ -376,7 +449,11 @@ def main() -> int:
     print("Built {0} page(s) into {1} ({2} build).".format(len(written), OUT_DIR.name, mode))
     for page in written:
         print("  {0}  {1:,} bytes".format(page.relative_to(ROOT), page.stat().st_size))
-    print("Checks passed: no {0}, tags balanced, JSON-LD reparsed, local references resolve.".format(BANNED_NAME))
+    print(
+        "Checks passed: required fields present, no {0} in sources or output, every date a "
+        "page states about itself is real and not in the future, tags balanced, JSON-LD "
+        "reparsed, local references resolve.".format(BANNED_NAME)
+    )
     if not cfg["contact"].get("email_confirmed"):
         print("\nNOTE: contact.email_confirmed is false, so --production is currently blocked.")
     return 0

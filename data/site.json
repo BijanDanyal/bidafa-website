@@ -92,8 +92,161 @@
     }
   },
 
+  "privacy": {
+    "_comment": "Privacy policy. Apple requires a privacy policy URL on every App Store listing, so this page is a submission blocker, not a nicety. Nothing here may be a claim we cannot evidence: the apps genuinely collect nothing, and the sections that describe them are marked as describing apps in development because none has been released. effective_on is checked by the build and must never move without the policy actually changing.",
+    "seo_title": "Privacy policy | BiDaFa Ltd",
+    "seo_description": "The BiDaFa Ltd privacy policy. Our apps run entirely offline, have no accounts, no analytics and no third party SDKs, and collect no personal data. Purchases are handled by the app store. The only personal data we hold is email you choose to send us.",
+    "hero": {
+      "eyebrow": "Legal",
+      "h1": "Privacy policy",
+      "lead": "The short version: our apps run entirely on your device, have no accounts and no analytics, and send us nothing. The only personal data BiDaFa Ltd holds about you is an email you have chosen to send us.",
+      "status": "No BiDaFa app has been released yet. The sections below that describe the apps describe how the apps we are building are designed, and they apply from the day the first one is available to download."
+    },
+    "effective_label": "Effective from",
+    "effective_on": "2026-09-09",
+    "effective_on_human": "9 September 2026",
+    "sections": [
+      {
+        "h": "Who is responsible",
+        "paragraphs": [
+          "BiDaFa Ltd is the data controller for this website and for the apps it publishes. Its registered details are a matter of public record and can be checked on the Companies House register:"
+        ],
+        "company_facts": {
+          "legal_name": "Registered name",
+          "company_number": "Company number",
+          "jurisdiction": "Place of registration",
+          "office": "Registered office",
+          "email": "Contact"
+        }
+      },
+      {
+        "h": "The apps collect nothing",
+        "paragraphs": [
+          "Our apps are designed to work entirely offline. They have no user accounts, no sign in and no sync. They do not collect, transmit or store personal data, and they send us no usage statistics, no telemetry and no crash reports.",
+          "There are no analytics, no advertising libraries, no trackers and no third party SDKs inside them. Your answers, your scores and your progress are held in the app's own storage on your device and are never sent anywhere. Deleting the app removes them from the device.",
+          "If your device backs itself up, a backup may contain that storage. Backups belong to you and are governed by the terms of whoever makes your device or provides the backup service, not by us, and we have no access to them."
+        ]
+      },
+      {
+        "h": "Purchases are handled by the app store, not by us",
+        "paragraphs": [
+          "Where an app of ours is paid for, the purchase is made through the app store you downloaded it from. Apple's App Store processes payment for our iOS apps under Apple's own privacy policy and terms, and if we later publish on Google Play the same applies to Google. We never see your card details, your billing address or your store account.",
+          "Restoring a purchase on another device also works through your store account. That check happens between your device and the store. It creates no account with us, and it tells us nothing about you."
+        ]
+      },
+      {
+        "h": "This website",
+        "paragraphs": [
+          "This site is a set of static files. It sets no cookies of its own, and it contains no analytics, no tracking scripts and no executable JavaScript. The only script element on any page holds the structured data that describes the company to search engines, and it does nothing when the page loads. Nothing here profiles you or follows you between pages.",
+          "It is hosted on GitHub Pages, so GitHub serves the files and keeps the standard server logs any web host keeps, which can include your IP address and the page you requested. Those logs are GitHub's, held under GitHub's own privacy statement. We do not receive them, we cannot read them, and there is no analytics account of any kind attached to this site."
+        ]
+      },
+      {
+        "h": "If you email us",
+        "paragraphs": [
+          "Emailing us is the only way you can give us personal data. When you do, we hold your email address, your name if you include it, and whatever is in your message, for as long as we need it to answer you and to keep a record of what we answered.",
+          "The mailbox is hosted on Google Workspace, so Google handles the mail for us as our service provider. Our lawful basis for holding your message is legitimate interest: you have written to us and you expect a reply.",
+          "We do not add you to a mailing list, we do not sell or share your message, and we use it only to reply to you and, where you have reported an error, to fix it."
+        ]
+      },
+      {
+        "h": "Children",
+        "paragraphs": [
+          "Our apps are study aids for occupational licensing and certification exams, which are taken by adults. They are not directed at children, and they collect nothing from anyone of any age."
+        ]
+      },
+      {
+        "h": "Your rights",
+        "paragraphs": [
+          "UK data protection law gives you the right to ask what personal data we hold about you, to have it corrected or erased, to object to how we use it, and to be given a copy of it. Because the only personal data we hold is correspondence you started, in practice that means asking us about your emails.",
+          "Email the address below and we will deal with it. If you are not satisfied with how we respond, you have the right to complain to the Information Commissioner's Office, the UK supervisory authority, at ico.org.uk."
+        ]
+      },
+      {
+        "h": "Changes to this policy",
+        "paragraphs": [
+          "If this policy changes, the effective date at the top of this page changes with it. This site is built from a public repository, so every previous version of this text stays in that public history and can be compared against this one."
+        ]
+      }
+    ],
+    "contact_heading": "Contact",
+    "contact_line": "Questions about this policy, or about data we hold, go to this address."
+  },
+
+  "support": {
+    "_comment": "Support page. Apple requires a support URL on every App Store listing, so this page is a submission blocker too. Reply time: Bijan chose on 2026-09-09 NOT to publish a target, on the grounds that a stated time he cannot always keep would be exactly the kind of unevidenceable claim iron rule 1 exists to stop. Do not add one back without asking him.",
+    "seo_title": "Support | BiDaFa Ltd",
+    "seo_description": "Support for BiDaFa Ltd apps: how to restore a purchase on a new device, how to report a question you believe is wrong, and how to reach a person. Everything is handled by email at BiDaFa@bidafaapp.com.",
+    "hero": {
+      "eyebrow": "Help and contact",
+      "h1": "Support",
+      "lead": "Everything here is handled over email by the people who build the apps. There is no ticket system, no account to log into and no phone queue.",
+      "status": "No BiDaFa app has been released yet. The instructions below apply to our apps from the day the first one is available to download."
+    },
+    "sections": [
+      {
+        "h": "What our apps are",
+        "paragraphs": [
+          "BiDaFa Ltd builds practice and revision apps for occupational licensing and certification exams: the tests people sit before they are allowed to work in a regulated job.",
+          "Each app covers one exam in one jurisdiction. Questions are written from the published rules, regulations and official training manuals that the exam itself is set from, and every answer carries an explanation rather than a bare score at the end. The apps are designed to work offline and to be a single purchase rather than a subscription."
+        ]
+      },
+      {
+        "h": "Restoring a purchase on a new device",
+        "paragraphs": [
+          "A purchase belongs to the store account that bought it, not to the device, so you can restore it on another device without paying twice. There is no BiDaFa account and no password to recover."
+        ],
+        "steps": [
+          "Sign in on the new device with the same Apple Account you used to buy the app. A different account cannot see the purchase.",
+          "Install the app from the App Store.",
+          "Open the app and choose Restore purchases in its settings. The app asks the store what that account owns and unlocks accordingly.",
+          "If nothing restores, check first that you are signed in with the account that bought it, then email us and include your store receipt."
+        ],
+        "after": [
+          "The store's own purchase record is what settles this. We cannot see your store account, so the receipt is what lets us help."
+        ]
+      },
+      {
+        "h": "Reporting a question you believe is wrong",
+        "paragraphs": [
+          "A factual error in a question is the most serious thing that can go wrong in an app like ours, so a report about one takes priority over everything else we are doing."
+        ],
+        "steps": [
+          "Email the address below and put Wrong question in the subject line.",
+          "Tell us which app it is, and give the question id shown with the question. That id is what lets us find the exact item in the bank.",
+          "Tell us what you believe is wrong, and the rule or source you think it conflicts with if you know it."
+        ],
+        "after": [
+          "We check the report against the source document the question was written from. If it is wrong we correct it at the source, the correction goes out in the next update, and we write back to tell you what changed."
+        ]
+      },
+      {
+        "h": "Anything else",
+        "paragraphs": [
+          "A crash, a purchase that will not go through, a question about what an app covers, or a request to delete something you have emailed us: all of it goes to the same address.",
+          "We read and answer every email ourselves. We do not publish a target reply time, because we would rather state nothing than state a deadline we cannot always keep."
+        ]
+      },
+      {
+        "h": "What we cannot do",
+        "points": [
+          "We cannot tell you whether you will pass, book your exam for you, or contact a regulator or awarding body on your behalf.",
+          "We are not approved by, endorsed by or affiliated with any regulator or awarding body.",
+          "We cannot refund a store purchase ourselves. Refunds are handled by the app store you bought from, under that store's own policy."
+        ]
+      }
+    ],
+    "contact_heading": "Contact",
+    "contact_line": "Support, corrections and anything else go to this address."
+  },
+
   "footer": {
     "legal": "BiDaFa Ltd is a company registered in England and Wales, company number 17388837. Registered office: 82 Hallam Grange Rise, Sheffield, England, S10 4BG.",
-    "copyright_holder": "BiDaFa Ltd"
+    "copyright_holder": "BiDaFa Ltd",
+    "_links_comment": "Rendered as the footer nav on every page. Apple requires a link to a privacy policy and to support from the store listing, and gate_local_refs proves both of these resolve in the built output before the site can ship.",
+    "links": [
+      { "label": "Privacy policy", "href": "/privacy/" },
+      { "label": "Support", "href": "/support/" }
+    ]
   }
 }
