@@ -51,6 +51,13 @@
 
 <footer class="site-footer">
   <div class="wrap">
+    <nav class="footer-links" aria-label="Legal and support">
+      <ul>
+        {% for item in footer.links %}
+        <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
     <p class="legal">{{ footer.legal }}</p>
     <p class="copyright">Copyright {{ build.year }} {{ footer.copyright_holder }}.</p>
   </div>

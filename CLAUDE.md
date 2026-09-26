@@ -33,6 +33,44 @@ public, it is deployed, and it must never be able to reach into `exam-factory` o
    dependency: a toolchain failure on the author's machine must never be able to take the
    live site down.
 
+## The two pages the app stores require
+
+`/privacy/` and `/support/` are not marketing pages. Apple requires a link to a privacy
+policy and to a support page on every App Store listing, so a broken or missing one is a
+submission blocker, and Google Play asks for the same. They are therefore load bearing in
+the same way the legal footer is.
+
+Three things about them are decisions, not accidents:
+
+1. **They describe apps that do not exist yet, and they say so.** Each carries a status
+   note stating that no BiDaFa app has been released and that the app sections apply from
+   the day the first one ships. Iron rules 1 and 4 do not get suspended because a store
+   form wants a policy. Delete those notes in the same change that ships a real app.
+2. **The support page publishes no target reply time.** Bijan chose this on 2026-09-09,
+   having been offered 5, 2 and 1 working day: a stated deadline he cannot always keep
+   would be exactly the unevidenceable claim iron rule 1 exists to stop. Do not add one
+   back without asking him.
+3. **The registered details on the privacy page are rendered from the `company` block**,
+   never retyped as prose, so they cannot drift away from the Companies House record that
+   iron rule 5 pins them to.
+
+Both pages render from `templates/document.html`, which carries structure only: hero,
+sections of paragraphs, ordered steps, bullet points, and a definition list built from the
+`company` block. A further policy page is an entry in `data/pages.json` plus a block in
+`data/site.json`, with no new template.
+
+## A date a page states about itself is gated
+
+`build.py` checks every `effective_on` and `checked_on` in a page's data: it must be a real
+YYYY-MM-DD date, it must not be in the future, and where a human readable twin such as
+`effective_on_human` exists the two must agree on the year. The effective date of a privacy
+policy is the most consequential date on the site, because users and store reviewers rely
+on it to know which version binds them, and nothing else in the build would notice a typo.
+
+`footer.links` is a required field for the same reason: `base.html` renders it on every
+page, and it holds the two URLs a store listing points at, so its absence must fail as a
+sentence naming the field rather than as a Jinja traceback.
+
 ## The honest-count rule (governs the future per-exam pages)
 
 When product pages are generated from a pack's `website.json`, **every bank-size figure
@@ -50,6 +88,7 @@ See `PACK-INTERFACE.md` for the measured shape of `website.json`.
 
     data/site.json      every fact and every line of copy
     data/pages.json     page manifest; sitemap is generated from it
+    templates/document.html  reusable policy page: privacy, support, and the next one
     templates/          Jinja2, autoescaped, structure only
     assets/             one stylesheet, one favicon, no fonts, no JavaScript
     build.py            renders data + templates into docs/, then gates the output

@@ -240,3 +240,41 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* Document pages (privacy, support) */
+
+.doc-date { padding-block: 1.25rem; border-bottom: 1px solid var(--rule); }
+.doc-date p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+.doc-date time { color: var(--ink); font-weight: 600; }
+
+.facts-list {
+  display: grid;
+  grid-template-columns: minmax(9rem, auto) 1fr;
+  gap: 0.4rem 1.25rem;
+  max-width: 68ch;
+  margin: 0 0 1rem;
+}
+.facts-list dt { color: var(--ink-soft); }
+.facts-list dd { margin: 0; }
+
+@media (max-width: 32rem) {
+  .facts-list { grid-template-columns: 1fr; gap: 0.1rem; }
+  .facts-list dd { margin-bottom: 0.6rem; }
+}
+
+.steps, .points { max-width: 68ch; margin: 0 0 1rem; padding-left: 1.4rem; }
+.steps li, .points li { margin-bottom: 0.5rem; }
+.steps li:last-child, .points li:last-child { margin-bottom: 0; }
+
+/* Footer navigation. The privacy and support links are what an app store listing points
+   at, so they appear on every page rather than only on the home page. */
+
+.footer-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+.footer-links a { font-weight: 600; }
